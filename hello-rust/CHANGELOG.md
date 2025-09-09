@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/aa1z3zz/release-please-monorepo-example/compare/hello_rust@v0.3.0...hello_rust@v1.0.0) (2025-09-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update main.rs
+
+### Features
+
+* Update main.rs ([e6e6ebc](https://github.com/aa1z3zz/release-please-monorepo-example/commit/e6e6ebc4e7ad0238d68e42cd29697ca9c0676a79))
+
 ## [0.3.0](https://github.com/aa1z3zz/release-please-monorepo-example/compare/hello_rust@v0.2.0...hello_rust@v0.3.0) (2025-09-08)
 
 
