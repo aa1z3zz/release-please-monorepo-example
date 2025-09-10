@@ -1,0 +1,70 @@
+name: Semantic Release - Hello React
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'hello-react/**'
+      - '.github/workflows/semantic-release-hello-react.yml'
+
+jobs:
+  semantic-release:
+    name: Semantic Release
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: hello-react
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: hello-react/package-lock.json
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install semantic-release plugins
+        run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+      
+      - name: Run tests
+        run: npm test -- --watchAll=false
+      
+      - name: Build
+        run: npm run build
+      
+      - name: Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npx semantic-release
+      
+      - name: Create artifact
+        if: success()
+        run: zip -r hello-react-build.zip build
+      
+      - name: Upload build artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello-react-build
+          path: hello-react/hello-react-build.zip
+          retention-days: 5
+      
+      - name: Upload to Release
+        if: success() && startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          gh release upload v$VERSION hello-react-build.zip
