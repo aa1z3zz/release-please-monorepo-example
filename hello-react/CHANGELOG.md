@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/aa1z3zz/release-please-monorepo-example/compare/hello-react@v2.0.0...hello-react@v2.1.0) (2025-09-11)
+
+
+### Features
+
+* test react ([efbab4a](https://github.com/aa1z3zz/release-please-monorepo-example/commit/efbab4a13b185f9eaf5c8b342a5921d5c186d36c))
+
 ## [2.0.0](https://github.com/aa1z3zz/release-please-monorepo-example/compare/hello-react@v1.0.0...hello-react@v2.0.0) (2025-09-11)
 
 
