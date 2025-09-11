@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/aa1z3zz/release-please-monorepo-example/compare/v1.2.0...v1.3.0) (2025-09-11)
+
+
+### Features
+
+* test react ([efbab4a](https://github.com/aa1z3zz/release-please-monorepo-example/commit/efbab4a13b185f9eaf5c8b342a5921d5c186d36c))
+
 # [1.2.0](https://github.com/aa1z3zz/release-please-monorepo-example/compare/v1.1.0...v1.2.0) (2025-09-10)
 
 
